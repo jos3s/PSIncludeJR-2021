@@ -72,27 +72,21 @@ window.addEventListener("click", function(el) {
 
 const nightMode = document.querySelector('#night-mode')
 const nightModeStorage = localStorage.getItem('gmtNightMode')
-console.log(nightModeStorage);
-console.log(window.matchMedia("(prefers-color-scheme:dark").matches);
-if(nightModeStorage){
+windowsDark=window.matchMedia("(prefers-color-scheme:dark").matches
+
+if(nightModeStorage=="false"){
     nightMode.checked = false
-}else if(window.matchMedia("(prefers-color-scheme:dark").matches){
-    modoNoturno()
-    nightMode.checked = true
-}else{
-    console.log();
+}else if(windowsDark && nightModeStorage=="true" || !windowsDark && nightModeStorage=="true"){
     modoNoturno()
     nightMode.checked = true
 }
-
 
 nightMode.addEventListener('click', () => {
     modoNoturno()
     if (document.documentElement.classList.contains('night')) {
         localStorage.setItem('gmtNightMode', true)
-        return
     }else{
-        localStorage.setItem('gmtNightMode',false)
+        localStorage.setItem('gmtNightMode', false)
     }
 })
 
