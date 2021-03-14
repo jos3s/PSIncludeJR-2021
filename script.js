@@ -29,6 +29,10 @@ window.addEventListener("click", function(el) {
         const title=div.querySelector('.titleq')
         title.style.color="hsl(238, 29%, 16%)"
 
+        const arrows=div.parentElement.querySelectorAll('.arrowDown')
+        arrows.forEach(element => {
+            element.classList.remove('rotate')
+        });
         const arrow=e.parentElement.querySelector('.arrowDown')
         if(!video.classList.contains('active')){
             if(video.classList.contains('no-open')){
