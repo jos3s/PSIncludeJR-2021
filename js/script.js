@@ -88,7 +88,7 @@ let windowsDark=window.matchMedia("(prefers-color-scheme:dark").matches
 
 if(nightModeStorage=="false"){
 	nightMode.checked = false
-}else if(windowsDark && nightModeStorage=="true" || !windowsDark && nightModeStorage=="true"){
+}else if(windowsDark && nightModeStorage=="true" || !windowsDark && nightModeStorage=="true" || windowsDark && (nightModeStorage=="false" || nightModeStorage==null)){
 	modoNoturno()
 	nightMode.checked = true
 }
