@@ -4,16 +4,13 @@ window.addEventListener("DOMContentLoaded", function (el) {
     const video=conteudo[0]
     const title=conteudo[0].parentElement.querySelector('.info')
     if(document.documentElement.classList.contains('night')){
-        title.querySelector('.questao').style.color="#ffffff"
+        definirCor(title.querySelector('.questao'),"#ffffff")
     }else{
-        title.style.color="hsl(238, 29%, 16%)"
+        definirCor(title,"hsl(238, 29%, 16%)")
     }
-
     const arrow=conteudo[0].parentElement.querySelector('.arrowDown')
     if(video.classList.contains('no-open')){
-        video.classList.remove('no-open')
-        video.classList.add('active')
-        arrow.classList.add('rotate')
+        activeQuestion(video, arrow)
     }
 })
 
@@ -27,20 +24,7 @@ window.addEventListener("click", function(el) {
             element.classList.add('no-open')
         });
 
-        const titles=div.parentElement.querySelectorAll('h3')
-        let title=div.querySelector('.info')
-        title=div.querySelector('h3')
-        if (!document.documentElement.classList.contains('night')){
-            titles.forEach(element => {
-                element.style.color="hsl(237, 12%, 33%)"
-            });
-            title.style.color="hsl(238, 29%, 16%)"
-        }else{
-            titles.forEach(element => {
-                element.style.color="#dcdcdc"
-            });
-            title.style.color="#ffffff"
-        }
+        const title=colorindoTitulos(div)
 
         const arrows=div.parentElement.querySelectorAll('.arrowDown')
         arrows.forEach(element => {
@@ -49,25 +33,53 @@ window.addEventListener("click", function(el) {
         const arrow=e.parentElement.querySelector('.arrowDown')
         if(!video.classList.contains('active')){
             if(video.classList.contains('no-open')){
-                video.classList.remove('no-open')
-                video.classList.add('active')
-                arrow.classList.add('rotate')
+               activeQuestion(video,arrow)
             }
         }else{
-            video.classList.remove('active')
-            if (!document.documentElement.classList.contains('night')){
-                title.style.color="hsl(237, 12%, 33%)"
-            }else{
-                title.style.color="#dcdcdc"
-            }
-            title.classList.remove('info')
-            title.classList.add('info')
-            arrow.classList.remove('rotate')
+            disableQuestion(video,title,arrow)
         }
 
     }
 })
 
+function colorindoTitulos(div) {
+    const titles=div.parentElement.querySelectorAll('h3')
+    const title=div.querySelector('.info').querySelector('h3')
+    if (!document.documentElement.classList.contains('night')){
+        titles.forEach(element => {
+            definirCor(element,"hsl(237, 12%, 33%)")
+        });
+        definirCor(title,"hsl(238, 29%, 16%)")
+    }else{
+        titles.forEach(element => {
+            definirCor(element,"#dcdcdc")
+        });
+        definirCor(title, "white")
+    }
+    return title
+}
+
+function activeQuestion(video, arrow) {
+    video.classList.remove('no-open')
+    video.classList.add('active')
+    arrow.classList.add('rotate')
+}
+
+function disableQuestion(video, title, arrow) {
+    video.classList.remove('active')
+    if (!document.documentElement.classList.contains('night')){
+        definirCor(title, "hsl(237, 12%, 33%)")
+    }else{
+        definirCor(title,"#dcdcdc" )
+    }
+    title.classList.remove('info')
+    title.classList.add('info')
+    arrow.classList.remove('rotate')
+}
+
+function definirCor(elemento, cor) {
+    elemento.style.color=cor
+}
 
 
 const nightMode = document.querySelector('#night-mode')
@@ -94,21 +106,21 @@ function modoNoturno() {
     document.documentElement.classList.toggle('night')
     conteudo.forEach(elemento => {
     if(!elemento.classList.contains("no-open")){
-        const titulo=elemento.parentElement.querySelector('.questao')
-        titulo.style.color="white"
+        const title=elemento.parentElement.querySelector('.questao')
+        definirCor(title, "white")
     }else{
         conteudo.forEach(element => {
-            const titulo=element.parentElement.querySelector('.questao')
-            titulo.style.color="#dcdcdc"
+            const title=element.parentElement.querySelector('.questao')
+            definirCor(title, "#dcdcdc")
         });
     }
     });
     if (!document.documentElement.classList.contains('night')){
         conteudo.forEach(element => {
-            const titulo=element.parentElement.querySelector('.questao')
-            titulo.style.color="hsl(237, 12%, 33%)"
+            const title=element.parentElement.querySelector('.questao')
+            definirCor(title, "hsl(237, 12%, 33%)")
             if (!element.classList.contains('no-open')){
-                titulo.style.color="var(--verydark-blue)"
+                definirCor(title,"var(--verydark-blue)")
             }
         });
     }
