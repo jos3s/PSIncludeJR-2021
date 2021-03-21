@@ -23,6 +23,9 @@ window.addEventListener("click", function(el) {
 		conteudo.forEach(element => {
 			element.classList.add("no-open")
 		})
+		
+		let iframe=div.querySelector("iframe")
+		iframe.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"" + "pauseVideo" + "\",\"args\":\"\"}", "*")
 
 		const title=colorindoTitulos(div)
 
