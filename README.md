@@ -28,5 +28,5 @@ O projeto é dividido em 4 etapas:
 - [x] Fazer um tema escuro
 - [x] Salvar a seleção de tema
 - [x] Definir o tema com base no sistema
-- [ ] Incorporar os vídeos finais
-- [ ] Enviar o projeto
+- [x] Incorporar os vídeos finais
+- [x] Enviar o projeto
