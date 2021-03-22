@@ -1,4 +1,7 @@
-const conteudo=document.querySelectorAll(".contend")
+import modoNoturno from "./nightMode.js"
+import {definirCor, colorindoTitulos, activeQuestion,disableQuestion,} from "./utils.js"
+import {nightMode,nightModeStorage,windowsDark,conteudo} from "./elements.js" 
+
 
 window.addEventListener("DOMContentLoaded", ()=> {
 	const video=conteudo[0]
@@ -45,49 +48,6 @@ window.addEventListener("click", function(el) {
 	}
 })
 
-function colorindoTitulos(div) {
-	const titles=div.parentElement.querySelectorAll("h3")
-	const title=div.querySelector(".info").querySelector("h3")
-	if (!document.documentElement.classList.contains("night")){
-		titles.forEach(element => {
-			definirCor(element,"hsl(237, 12%, 33%)")
-		})
-		definirCor(title,"hsl(238, 29%, 16%)")
-	}else{
-		titles.forEach(element => {
-			definirCor(element,"#dcdcdc")
-		})
-		definirCor(title, "white")
-	}
-	return title
-}
-
-function activeQuestion(video, arrow) {
-	video.classList.remove("no-open")
-	video.classList.add("active")
-	arrow.classList.add("rotate")
-}
-
-function disableQuestion(video, title, arrow) {
-	video.classList.remove("active")
-	if (!document.documentElement.classList.contains("night")){
-		definirCor(title, "hsl(237, 12%, 33%)")
-	}else{
-		definirCor(title,"#dcdcdc" )
-	}
-	title.classList.remove("info")
-	title.classList.add("info")
-	arrow.classList.remove("rotate")
-}
-
-function definirCor(elemento, cor) {
-	elemento.style.color=cor
-}
-
-
-const nightMode = document.querySelector("#night-mode")
-const nightModeStorage = localStorage.getItem("gmtNightMode")
-let windowsDark=window.matchMedia("(prefers-color-scheme:dark").matches
 
 if(nightModeStorage=="false"){
 	nightMode.checked = false
@@ -104,27 +64,3 @@ nightMode.addEventListener("click", () => {
 		localStorage.setItem("gmtNightMode", false)
 	}
 })
-
-function modoNoturno() {
-	document.documentElement.classList.toggle("night")
-	conteudo.forEach(elemento => {
-		if(!elemento.classList.contains("no-open")){
-			const title=elemento.parentElement.querySelector(".questao")
-			definirCor(title, "white")
-		}else{
-			conteudo.forEach(element => {
-				const title=element.parentElement.querySelector(".questao")
-				definirCor(title, "#dcdcdc")
-			})
-		}
-	})
-	if (!document.documentElement.classList.contains("night")){
-		conteudo.forEach(element => {
-			const title=element.parentElement.querySelector(".questao")
-			definirCor(title, "hsl(237, 12%, 33%)")
-			if (!element.classList.contains("no-open")){
-				definirCor(title,"var(--verydark-blue)")
-			}
-		})
-	}
-}
