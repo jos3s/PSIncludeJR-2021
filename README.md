@@ -37,4 +37,4 @@ Ele é dividido em 4 etapas:
 
 Para exibir esse projeto na sua máquina não é necessário usar um gerênciador de dependências (como npm ou yarn), já que o projeto utiliza *eslint*  mas apenas como dependência de desenvolvimento.
 
-Também é possível visualizar o projeto online nesse [link](https://joses.netlify.com).
+Também é possível visualizar o projeto online nesse [link](https://jos3s.netlify.com).
