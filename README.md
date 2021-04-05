@@ -1,6 +1,8 @@
 # Projeto para o processo seletivo da IncludeJR em 2021.1
 
-O projeto é dividido em 4 etapas:
+## Sobre o projeto
+
+Ele é dividido em 4 etapas:
 
 - Gravação e upload de vídeos:
     1. "Sobre Mim"
@@ -18,7 +20,7 @@ O projeto é dividido em 4 etapas:
 - Análise de perfil comportamental DISC:
     [Faça seu Teste DISC e descubra sua personalidade](https://www.pactorh.com.br/teste-disc/disc/faca-agora-teste-disc/). Anote o resultado que você obteve, por meio de uma captura de tela do mesmo, e nos envie junto com o desafio do **Sistema de Mural de Vídeos**.
 
-## Lista de objetivos:
+### Lista de objetivos
 
 - [x] Base html para o sistema
 - [x] Fonte e cores escolhidas
@@ -30,3 +32,9 @@ O projeto é dividido em 4 etapas:
 - [x] Definir o tema com base no sistema
 - [x] Incorporar os vídeos finais
 - [x] Enviar o projeto
+
+## Como usar
+
+Para exibir esse projeto na sua máquina não é necessário usar um gerênciador de dependências (como npm ou yarn), já que o projeto utiliza *eslint*  mas apenas como dependência de desenvolvimento.
+
+Também é possível visualizar o projeto online nesse [link](https://joses.netlify.com).
